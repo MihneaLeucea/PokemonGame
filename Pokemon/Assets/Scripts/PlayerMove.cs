@@ -25,7 +25,7 @@ public class PlayerMove : MonoBehaviour
             sprite.flipX = moveX < 0;
 
         anim.SetBool("isRunning", moveX != 0);
-        anim.SetBool("isGoingUp", moveY > 0);
-        anim.SetBool("isGoingD", moveY < 0);
+        anim.SetBool("IsGoingUp", moveY > 0);
+        anim.SetBool("IsGoingDown", moveY < 0);
     }
 }
