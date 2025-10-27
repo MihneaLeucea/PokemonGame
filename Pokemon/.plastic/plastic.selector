@@ -1,0 +1,4 @@
+repository "Pokemon/Pokemon@1375866215703@cloud"
+  path "/"
+    br "/main"
+    co "/main"
