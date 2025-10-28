@@ -1,31 +1,87 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
-    public int speed;
+    public float speed = 5f;
+    public LayerMask solidObjectsLayer;
+    public LayerMask grass;
+    private bool isMoving = false;
+    private Vector2 input;
+
     public Animator anim;
-    SpriteRenderer sprite;
+    private SpriteRenderer sprite;
+
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
 
-
     void Update()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        if (!isMoving)
+        {
+            input.x = Input.GetAxisRaw("Horizontal");
+            input.y = Input.GetAxisRaw("Vertical");
 
-        Vector2 moveDir = new Vector2(moveX, moveY).normalized;
-        transform.Translate(moveDir * speed * Time.deltaTime);
+            if (input.x != 0) input.y = 0;
 
-        if (moveX != 0)
-            sprite.flipX = moveX < 0;
+            if (input != Vector2.zero)
+            {
+                Vector2 targetPos = (Vector2)transform.position + input;
 
-        anim.SetBool("isRunning", moveX != 0);
-        anim.SetBool("IsGoingUp", moveY > 0);
-        anim.SetBool("IsGoingDown", moveY < 0);
+                if (IsWalkable(targetPos))
+                {
+                    StartCoroutine(Move(targetPos));
+                }
+
+                if (input.x != 0)
+                    sprite.flipX = input.x < 0;
+
+                anim.SetBool("isRunning", input.x != 0);
+                anim.SetBool("IsGoingUp", input.y > 0);
+                anim.SetBool("IsGoingDown", input.y < 0);
+            }
+            else
+            {
+                anim.SetBool("isRunning", false);
+                anim.SetBool("IsGoingUp", false);
+                anim.SetBool("IsGoingDown", false);
+            }
+        }
+    }
+
+    IEnumerator Move(Vector2 targetPos)
+    {
+        isMoving = true;
+
+        while ((targetPos - (Vector2)transform.position).sqrMagnitude > Mathf.Epsilon)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+            yield return null;
+        }
+
+        transform.position = targetPos;
+
+        CheckForEncounters();
+        isMoving = false;
+    }
+
+    private bool IsWalkable(Vector3 targetPos)
+    {
+        return Physics2D.OverlapCircle(targetPos, 0.1f, solidObjectsLayer) == null;
+    }
+
+    private void CheckForEncounters()
+    {
+        if (Physics2D.OverlapCircle(transform.position, 0.2f, grass) != null)
+        {
+            if(Random.Range(1, 101) <= 10)
+            {
+                SceneManager.LoadScene("BattleScreen");
+            }
+        }
     }
 }
