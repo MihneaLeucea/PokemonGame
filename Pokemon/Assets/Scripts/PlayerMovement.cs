@@ -6,9 +6,10 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public bool isMoving = false;
     private Vector2 input;
+    public LayerMask solidObjectsLayer;
 
     [Header("Mobile DPad Support")]
-    public DPadController dpad; // Assign in Inspector if using DPad
+    public DPadController dpad; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,7 +41,11 @@ public class PlayerMovement : MonoBehaviour
             if (input != Vector2.zero)
             {
                 var targetPos = (Vector2)transform.position + input;
-                StartCoroutine(Move(targetPos));
+                if(IsWalkable(targetPos))
+                {
+                    StartCoroutine(Move(targetPos));
+                }
+                
             }
         }
         
@@ -56,5 +61,14 @@ public class PlayerMovement : MonoBehaviour
         }
         transform.position = targetPos;
         isMoving = false;
+    }
+
+    private bool IsWalkable(Vector3 targetPos)
+    {
+        if (Physics2D.OverlapCircle(targetPos, 0.3f, solidObjectsLayer) != null)
+        {
+            return false;
+        }
+        return true;
     }
 }
