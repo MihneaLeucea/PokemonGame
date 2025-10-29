@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -12,11 +11,13 @@ public class PlayerMove : MonoBehaviour
 
     public Animator anim;
     private SpriteRenderer sprite;
+    private Transition sceneTransition;
 
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        sceneTransition = GameObject.Find("FadeAnimation").GetComponent<Transition>();
     }
 
     void Update()
@@ -78,9 +79,9 @@ public class PlayerMove : MonoBehaviour
     {
         if (Physics2D.OverlapCircle(transform.position, 0.2f, grass) != null)
         {
-            if(Random.Range(1, 101) <= 10)
+            if (Random.Range(1, 101) <= 10)
             {
-                SceneManager.LoadScene("BattleScreen");
+                sceneTransition.StartTransition();
             }
         }
     }
