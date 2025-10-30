@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class Move
 {
-    public MoveBase Base { get; }
+    public MoveBase Base { get; set; }
 
-    public int PP { get; set; }
+    public int Pp { get; set; }
 
     public Move(MoveBase pBase, int pp)
     {
         Base = pBase;
-        PP = pp;
+        Pp = pp;
     }
 
     public Move(MoveBase @base)

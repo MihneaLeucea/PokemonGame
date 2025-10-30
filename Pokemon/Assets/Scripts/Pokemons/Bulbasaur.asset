@@ -19,4 +19,8 @@ MonoBehaviour:
   maxHp: 45
   attack: 49
   defense: 49
-  learnableMoves: []
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: 456a083a3a5211a42ac0ed5361fedabc, type: 2}
+    level: 5
+  - moveBase: {fileID: 11400000, guid: fca171a0525442948aa61cd180d64532, type: 2}
+    level: 5

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c97c883b970574597ec6961ec43d3d, type: 3}
   m_Name: Ember
   m_EditorClassIdentifier: Assembly-CSharp::MoveBase
-  name: 
+  name: Ember
   type: 3
   power: 40
   accuracy: 100
