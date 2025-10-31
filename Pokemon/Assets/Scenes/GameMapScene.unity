@@ -92746,8 +92746,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4472f9f9d5729c44fae1ffd4f100e4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BushInteraction
-  transitionAnim: {fileID: 0}
-  sceneToLoad: BattleScreen
 --- !u!114 &965190330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94232,7 +94230,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1023733945}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4472f9f9d5729c44fae1ffd4f100e4c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 00803bf752ce4f4418a2f8988684264b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Transition
   transitionAnim: {fileID: 1476024441}
