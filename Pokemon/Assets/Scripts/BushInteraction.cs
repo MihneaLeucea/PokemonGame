@@ -15,7 +15,11 @@ public class BushInteraction : MonoBehaviour
         {
             int randomNumber = Random.Range(1, maxChance);
             if (randomNumber > 90)
-                SceneManager.LoadScene("BattleScreen");
+            {
+                SceneManager.LoadScene("BattleScene");
+
+            }
+
         }
     }
 }

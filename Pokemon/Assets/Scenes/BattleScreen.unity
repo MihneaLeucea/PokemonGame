@@ -780,6 +780,7 @@ MonoBehaviour:
   lettersPerSecond: 30
   dialogText: {fileID: 552507997}
   highlightedColor: {r: 1, g: 0, b: 0, a: 1}
+  currentPP: 0
   actionSelector: {fileID: 103883505}
   moveSelector: {fileID: 1497877208}
   moveDetails: {fileID: 72478376}
@@ -1699,7 +1700,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 216.00003, y: 49.99997}
+  m_AnchoredPosition: {x: 200, y: 49.99997}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1443860546
@@ -2477,7 +2478,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -211, y: -100}
+  m_AnchoredPosition: {x: -200, y: -100}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1934092866

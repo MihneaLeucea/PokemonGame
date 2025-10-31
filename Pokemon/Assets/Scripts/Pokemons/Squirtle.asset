@@ -19,4 +19,5 @@ MonoBehaviour:
   maxHp: 44
   attack: 48
   defense: 65
+  speed: 43
   learnableMoves: []
